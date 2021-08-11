@@ -8,7 +8,7 @@ are currently two stacks in use:
     2. S3 bucket (for storing ad images)
     3. Necessary security groups
 
-2. **Dev stack**: this includes
+2. **Dev stack**: this includes all resources in the core stack.
 
 ## Deploying the Core stack
 
