@@ -3,8 +3,8 @@
 This directory contains CF templates used to configure the DASDD environment, both for production and development. There
 are currently two stacks in use:
 
-1. **Core stack**: this includes resources such as:
-    1. RDS Postgres database (prod)
+1. **Core stack**: this stack is used for prod and includes resources such as:
+    1. RDS Postgres database
     2. S3 bucket (for storing ad images)
     3. Necessary security groups
 
