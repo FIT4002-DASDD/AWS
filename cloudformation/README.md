@@ -3,14 +3,13 @@
 This directory contains CF templates used to configure the DASDD environment, both for production and development. There
 are currently two stacks in use:
 
-1. **Core stack**: this includes resources such as:
-    1. RDS Postgres database (prod)
+1. **Core stack**: this stack is used for prod and includes resources such as:
+    1. RDS Postgres database
     2. S3 bucket (for storing ad images)
     3. Necessary security groups
     4. CodeDeploy-configured EC2 instance via a nested stack (for running bots and push service)
 
-2. **Dev stack**: this includes:
-   1. ALL THE ABOVE
+2. **Dev stack**: this includes all resources in the core stack.
 
 ## Deploying the Core stack
 
