@@ -83,3 +83,16 @@ Resources:
       MasterUserPassword: !Ref DBPassword
       VPCSecurityGroups: [ !GetAtt DASDDAdDBStagingSecurityGroup.GroupId ]
     DeletionPolicy: Delete
+
+  DASDDBotServerStaging:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3-ap-southeast-2.amazonaws.com/aws-codedeploy-ap-southeast-2/templates/latest/CodeDeploy_SampleCF_Template.json
+      Parameters:
+        InstanceCount: 1
+        InstanceType: t1.micro
+        KeyPairName: bot_server_kp
+        OperatingSystem: Linux
+        SSHLocation: 0.0.0.0/0
+        TagKey: Name
+        TagValue: DASDDBotServerStaging

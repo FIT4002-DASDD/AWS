@@ -7,20 +7,24 @@ are currently two stacks in use:
     1. RDS Postgres database (prod)
     2. S3 bucket (for storing ad images)
     3. Necessary security groups
+    4. CodeDeploy-configured EC2 instance via a nested stack (for running bots and push service)
 
-2. **Dev stack**: this includes
+2. **Dev stack**: this includes:
+   1. ALL THE ABOVE
 
 ## Deploying the Core stack
 
 Example:
 
-`aws cloudformation create-stack --stack-name DASDD-core-stack --template-body file:///home/akshay/Desktop/Uni/FIT4002/FIT4002-DASDD-AWS/cloudformation/core-stack.yaml --profile educate --region us-east-1 --parameters ParameterKey=DBUsername,ParameterValue=postgres ParameterKey=DBPassword,ParameterValue=postgres
+`aws cloudformation create-stack --stack-name DASDD-core-stack --template-body file:///home/akshay/Desktop/Uni/FIT4002/FIT4002-DASDD-AWS/cloudformation/core-stack.yaml --profile educate --region us-east-1 --parameters ParameterKey=DBUsername,ParameterValue=postgres ParameterKey=DBPassword,ParameterValue=postgres --capabilities=CAPABILITY_IAM
 `
+
+To update the stack, replace `create-stack` with `update-stack`.
 
 ## Deploying the Dev stack
 
 Example:
-`aws cloudformation create-stack --stack-name DASDD-dev-stack --template-body file:///home/akshay/Desktop/Uni/FIT4002/FIT4002-DASDD-AWS/cloudformation/dev-stack.yaml --profile educate --region us-east-1 --parameters ParameterKey=DBUsername,ParameterValue=postgres ParameterKey=DBPassword,ParameterValue=postgres
+`aws cloudformation create-stack --stack-name DASDD-dev-stack --template-body file:///home/akshay/Desktop/Uni/FIT4002/FIT4002-DASDD-AWS/cloudformation/dev-stack.yaml --profile educate --region us-east-1 --parameters ParameterKey=DBUsername,ParameterValue=postgres ParameterKey=DBPassword,ParameterValue=postgres --capabilities=CAPABILITY_IAM
 `
 
 ## References

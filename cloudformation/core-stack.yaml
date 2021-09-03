@@ -82,5 +82,18 @@ Resources:
       MasterUserPassword: !Ref DBPassword
       VPCSecurityGroups: [ !GetAtt DASDDAdDBSecurityGroup.GroupId ]
     DeletionPolicy: Delete  # Todo: flip to "Snapshot"
-#      MonitoringInterval: '60' # Optional
-#      MonitoringRoleArn: 'arn:aws:iam::123456789012:role/rds-monitoring-role'  # Optional
+  #      MonitoringInterval: '60' # Optional
+  #      MonitoringRoleArn: 'arn:aws:iam::123456789012:role/rds-monitoring-role'  # Optional
+
+  DASDDBotServer: # CodeDeploy-configured EC2 instance for running bots and push service
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3-ap-southeast-2.amazonaws.com/aws-codedeploy-ap-southeast-2/templates/latest/CodeDeploy_SampleCF_Template.json
+      Parameters:
+        InstanceCount: 1
+        InstanceType: t1.micro  # Todo: figure out why it's not liking t2s
+        KeyPairName: bot_server_kp
+        OperatingSystem: Linux
+        SSHLocation: 0.0.0.0/0
+        TagKey: Name
+        TagValue: DASDDBotServer
